@@ -24,17 +24,17 @@
 
 ## 2. 결과 9가지
 
-| # | 장면 | 격자(칸) | 속도 | 볼거리 | 폴더 |
-|---|---|---|---|---|---|
-| 1 | 해변 기차역 (구글 데모 재현) | 88×48 (4,224) | 실측 약 2.7장/초 | 기차, 구름, 낙엽 | [01-seaside-station](examples/01-seaside-station) |
-| 2 | Remember November 2026 북극곰 | 72×38 (2,736) | 실측 약 2.4장/초 | 달력 9월→10월→11월, 볼 빨개지며 손 흔들기 | [02-remember-november](examples/02-remember-november) |
-| 3 | 치이카와 풀 뽑기 | 64×38 | 예상 약 2장/초 | 하치와레 가르마, 우사기 "YAHA!" | [03-chiikawa](examples/03-chiikawa) |
-| 4 | A2O LITE 〈NEON〉 2인 인트로 | 64×38 | 실측 약 2.2장/초 | 아이징·시리 안무, 자막 "NEON AND BEYOND" ↔ "MIHON N BIHON?!" | [04-a2o-lite-neon](examples/04-a2o-lite-neon) |
-| 5 | 리센느 무대 v1 | 72×35 | 예상 약 2장/초 | 다섯 명 솔로 포즈 → 하트 (멤버 구분이 어려움) | [05-rescene-v1](examples/05-rescene-v1) |
-| 6 | 리센느 무대 v2 | 94×38 (3,572) | 예상 약 1.6장/초 | 이름표 + 멤버별 시그니처 동작 | [06-rescene-v2](examples/06-rescene-v2) |
-| 7 | 크리스마스 이브 마을 | 64×36 | 예상 약 2.4장/초 | 산타 썰매, 트리 불빛, MERRY CHRISTMAS | [07-christmas-eve](examples/07-christmas-eve) |
-| 8 | 수능 응원 D-5 → D-DAY | 56×32 | 예상 약 2장/초 | 카운트다운, 엿·찹쌀떡, FIGHTING! | [08-suneung-cheer](examples/08-suneung-cheer) |
-| 9 | 겨울 광화문 (스킬로 만든 첫 결과) | 72×36 | 예상 약 2장/초 | 눈 오는 광화문, 눈사람 만들기 | [09-winter-gwanghwamun](examples/09-winter-gwanghwamun) |
+| # | 장면 | 격자(칸) | 속도 | 볼거리 | 폴더 | 시트 |
+|---|---|---|---|---|---|---|
+| 1 | 해변 기차역 (구글 데모 재현) | 88×48 (4,224) | 실측 약 2.7장/초 | 기차, 구름, 낙엽 | [01-seaside-station](examples/01-seaside-station) | [보기](https://docs.google.com/spreadsheets/d/1m6LBBL5cDwkIMeNK3vybOcFgF7f0BA17q6kqjBclD0s/edit?usp=sharing) · [사본](https://docs.google.com/spreadsheets/d/1m6LBBL5cDwkIMeNK3vybOcFgF7f0BA17q6kqjBclD0s/copy) |
+| 2 | Remember November 2026 북극곰 | 72×38 (2,736) | 실측 약 2.4장/초 | 달력 9월→10월→11월, 볼 빨개지며 손 흔들기 | [02-remember-november](examples/02-remember-november) | [보기](https://docs.google.com/spreadsheets/d/1Ld7whQD9JxKisNTpY-QEYstR8Hzj2mmRypyh0f8S2F0/edit?usp=sharing) · [사본](https://docs.google.com/spreadsheets/d/1Ld7whQD9JxKisNTpY-QEYstR8Hzj2mmRypyh0f8S2F0/copy) |
+| 3 | 치이카와 풀 뽑기 | 64×38 | 예상 약 2장/초 | 하치와레 가르마, 우사기 "YAHA!" | [03-chiikawa](examples/03-chiikawa) | [보기](https://docs.google.com/spreadsheets/d/1PV8_GNtLJD_oO00zcL6lBPt1vKArpdn_JLy4Vqyak3g/edit?usp=sharing) · [사본](https://docs.google.com/spreadsheets/d/1PV8_GNtLJD_oO00zcL6lBPt1vKArpdn_JLy4Vqyak3g/copy) |
+| 4 | A2O LITE 〈NEON〉 2인 인트로 | 64×38 | 실측 약 2.2장/초 | 아이징·시리 안무, 자막 "NEON AND BEYOND" ↔ "MIHON N BIHON?!" | [04-a2o-lite-neon](examples/04-a2o-lite-neon) | [보기](https://docs.google.com/spreadsheets/d/16IqpbuEA2qwEGz05GYlRoqEpu8h8PmgmpAthf0cVwQk/edit?usp=sharing) · [사본](https://docs.google.com/spreadsheets/d/16IqpbuEA2qwEGz05GYlRoqEpu8h8PmgmpAthf0cVwQk/copy) |
+| 5 | 리센느 무대 v1 | 72×35 | 예상 약 2장/초 | 다섯 명 솔로 포즈 → 하트 (멤버 구분이 어려움) | [05-rescene-v1](examples/05-rescene-v1) | [보기](https://docs.google.com/spreadsheets/d/1fEpJEWywIxpJBjIfydYfHegHvSDN0XGztbSNUR5uL5o/edit?usp=sharing) · [사본](https://docs.google.com/spreadsheets/d/1fEpJEWywIxpJBjIfydYfHegHvSDN0XGztbSNUR5uL5o/copy) |
+| 6 | 리센느 무대 v2 | 94×38 (3,572) | 예상 약 1.6장/초 | 이름표 + 멤버별 시그니처 동작 | [06-rescene-v2](examples/06-rescene-v2) | [보기](https://docs.google.com/spreadsheets/d/1opWlQT42DmNEkv1cd3D--UxNh6o-7I0NMY-Kr_s5fOc/edit?usp=sharing) · [사본](https://docs.google.com/spreadsheets/d/1opWlQT42DmNEkv1cd3D--UxNh6o-7I0NMY-Kr_s5fOc/copy) |
+| 7 | 크리스마스 이브 마을 | 64×36 | 예상 약 2.4장/초 | 산타 썰매, 트리 불빛, MERRY CHRISTMAS | [07-christmas-eve](examples/07-christmas-eve) | [보기](https://docs.google.com/spreadsheets/d/1mc7P6mslOY-ixMUcP6AoRuoHFq6INOisqOsh_E3q79k/edit?usp=sharing) · [사본](https://docs.google.com/spreadsheets/d/1mc7P6mslOY-ixMUcP6AoRuoHFq6INOisqOsh_E3q79k/copy) |
+| 8 | 수능 응원 D-5 → D-DAY | 56×32 | 예상 약 2장/초 | 카운트다운, 엿·찹쌀떡, FIGHTING! | [08-suneung-cheer](examples/08-suneung-cheer) | [보기](https://docs.google.com/spreadsheets/d/11p-ik9Z2REhNWDkPpsFI_h0dz_90Blzp1tgcgaErBGw/edit?usp=sharing) · [사본](https://docs.google.com/spreadsheets/d/11p-ik9Z2REhNWDkPpsFI_h0dz_90Blzp1tgcgaErBGw/copy) |
+| 9 | 겨울 광화문 (스킬로 만든 첫 결과) | 72×36 | 예상 약 2장/초 | 눈 오는 광화문, 눈사람 만들기 | [09-winter-gwanghwamun](examples/09-winter-gwanghwamun) | [보기](https://docs.google.com/spreadsheets/d/1mZ__wr-_bx8Fzxepp1ete6WjgKCBkpUCf5BI25xJ2SY/edit?usp=sharing) · [사본](https://docs.google.com/spreadsheets/d/1mZ__wr-_bx8Fzxepp1ete6WjgKCBkpUCf5BI25xJ2SY/copy) |
 
 - "실측"은 60초 동안 실제 시트에서 프레임 번호가 얼마나 올라갔는지로 잰 값, "예상"은 Hydrogen이 코드 주석에 적은 값입니다.
 - 각 폴더에는 `prompt.txt`(보낸 프롬프트 전문), `Code.gs`(Hydrogen 원본 그대로), `frames.jpg`(8초 간격 장면 8칸)가 있습니다. 60초 영상은 [갤러리](https://techkwon.github.io/sheets-pixel-animation/)와 `docs/media/`에 있습니다.
@@ -54,6 +54,17 @@ Apps Script play(): B1 += 1 → SpreadsheetApp.flush() → 반복 (약 60초)
 - 색은 조건부 서식 규칙 16~24개로 바꿉니다. 색이 많을수록, 칸이 많을수록 느려집니다.
 
 ## 4. 직접 해 보기 — 손으로 (설치 없이)
+
+**가장 쉬운 방법: 공유 시트 사본 만들기**
+
+위 표의 **보기** 링크는 보기 전용이라 멈춘 그림만 보입니다(Play 메뉴는 편집 권한이 있어야 동작). 움직이게 하려면:
+
+1. 표의 **사본** 링크를 누르거나, 시트에서 **파일 → 사본 만들기**를 합니다. Apps Script도 같이 복사됩니다.
+2. 내 사본을 열면 메뉴가 생깁니다(몇 초 걸릴 수 있음). 메뉴에서 **Play**를 누르고, 처음 한 번 권한을 승인합니다(이 시트에만 접근하는 `@OnlyCurrentDoc`).
+3. 약 60초 동안 움직입니다. 멈추려면 **Stop**.
+
+**코드를 직접 붙여 넣는 방법**
+
 
 1. 새 구글 시트를 만듭니다.
 2. **확장 프로그램 → Apps Script**를 열고, 원하는 예제 폴더의 `Code.gs` 내용을 통째로 붙여 넣고 저장합니다.

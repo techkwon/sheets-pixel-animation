@@ -52,7 +52,7 @@ h2{font-family:"DotGothic16",monospace;font-weight:400;font-size:28px;margin:48p
 .card p{margin:0;color:var(--muted);font-size:14px}
 .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
 .meta span{font:500 12px/1 "JetBrains Mono",monospace;background:var(--cell);padding:6px 8px}
-.links{display:flex;gap:14px;font-size:14px;margin-top:6px}
+.links{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;margin-top:6px}
 .how{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
 .step{background:var(--surface);border:1px solid var(--line);padding:18px}
 .step b{font-family:"DotGothic16",monospace;font-weight:400;font-size:20px;display:block;margin-bottom:6px}
@@ -79,7 +79,7 @@ footer{margin:56px 0 0;padding:24px 0 40px;border-top:1px solid var(--line);colo
 
 <main class="wrap">
   <h2>갤러리</h2>
-  <p class="sub">실제 구글 시트에서 60초 동안 돌린 화면을 녹화했습니다. 빨리 감기 없이 실제 갱신 속도 그대로입니다.</p>
+  <p class="sub">실제 구글 시트에서 60초 동안 돌린 화면을 녹화했습니다. 빨리 감기 없이 실제 갱신 속도 그대로입니다. <b>시트 보기</b>는 보기 전용이라 멈춘 그림이고, 움직이게 하려면 <b>사본 만들기</b> 후 메뉴에서 Play를 누르세요.</p>
   <div class="grid" id="grid"></div>
 
   <h2>어떻게 움직이나</h2>
@@ -115,6 +115,7 @@ cd sheets-pixel-animation
 
 <script>
 const R = "https://github.com/techkwon/sheets-pixel-animation/tree/main/examples/";
+const S = {"01-seaside-station": "1m6LBBL5cDwkIMeNK3vybOcFgF7f0BA17q6kqjBclD0s", "02-remember-november": "1Ld7whQD9JxKisNTpY-QEYstR8Hzj2mmRypyh0f8S2F0", "03-chiikawa": "1PV8_GNtLJD_oO00zcL6lBPt1vKArpdn_JLy4Vqyak3g", "04-a2o-lite-neon": "16IqpbuEA2qwEGz05GYlRoqEpu8h8PmgmpAthf0cVwQk", "05-rescene-v1": "1fEpJEWywIxpJBjIfydYfHegHvSDN0XGztbSNUR5uL5o", "06-rescene-v2": "1opWlQT42DmNEkv1cd3D--UxNh6o-7I0NMY-Kr_s5fOc", "07-christmas-eve": "1mc7P6mslOY-ixMUcP6AoRuoHFq6INOisqOsh_E3q79k", "08-suneung-cheer": "11p-ik9Z2REhNWDkPpsFI_h0dz_90Blzp1tgcgaErBGw", "09-winter-gwanghwamun": "1mZ__wr-_bx8Fzxepp1ete6WjgKCBkpUCf5BI25xJ2SY"};
 const items = [
   ["01-seaside-station","해변 기차역","구글 데모 재현. 해안선을 달리는 기차, 구름, 낙엽.","88×48","실측 ~2.7 fps"],
   ["02-remember-november","Remember November 2026","달력이 11월로 넘어가면 북극곰이 볼을 붉히며 손을 흔듭니다.","72×38","실측 ~2.4 fps"],
@@ -134,7 +135,7 @@ for (const [slug, t, d, grid, fps] of items) {
   el.innerHTML = `<video src="media/${slug}.mp4" poster="media/${slug}.jpg" muted loop playsinline preload="none" controls></video>
   <div class="body"><h3><span class="num">${n}</span>${t}</h3><p>${d}</p>
   <div class="meta"><span>${grid}</span><span>${fps}</span></div>
-  <div class="links"><a href="${R}${slug}/Code.gs">Code.gs</a><a href="${R}${slug}/prompt.txt">프롬프트</a></div></div>`;
+  <div class="links"><a href="https://docs.google.com/spreadsheets/d/${S[slug]}/edit?usp=sharing">시트 보기</a><a href="https://docs.google.com/spreadsheets/d/${S[slug]}/copy">사본 만들기</a><a href="${R}${slug}/Code.gs">Code.gs</a><a href="${R}${slug}/prompt.txt">프롬프트</a></div></div>`;
   g.appendChild(el);
 }
 const io = "IntersectionObserver" in window ? new IntersectionObserver(es => {
