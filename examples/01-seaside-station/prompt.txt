@@ -1,0 +1,8 @@
+Turn Google Sheets into a moving pixel-art landscape, like Google's "Seaside Train Station (1x1 All Formulas)" demo: a quiet seaside train station at the edge of the sea, a small commuter train that slides along the coast, clouds drifting across the sky, and autumn leaves falling, all drawn with spreadsheet cells used as pixels.
+
+Rules:
+- Every pixel's colour must come from a spreadsheet formula in that cell (LET, SIN, MOD, INDEX and so on are fine) that depends on a single frame counter cell. Changing the frame counter must re-render the whole picture inside the spreadsheet; Apps Script must not paint pixels itself.
+- Use Apps Script only to (1) build the sheet: shrink rows and columns so each cell is about 4x4 px, write the formulas, add conditional formatting (or another native method) that maps the formula values to colours, and (2) advance the frame counter in a loop so it animates.
+- Keep it fast enough to run in a normal Google Sheets file: choose a grid size and colour palette that recalculates quickly, and say what frame rate to expect.
+- Deliver one file named Code.gs in the current directory with: setup() to build everything in the active spreadsheet, play() to animate for about 60 seconds, stop() if needed, and a short comment block at the top explaining how to paste it into Extensions > Apps Script and run it. No external libraries or network requests.
+Do it in one go, do not ask questions.

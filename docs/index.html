@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시트 픽셀 애니메이션</title>
+<meta name="description" content="구글 시트 셀 수식만으로 움직이는 픽셀 애니메이션 9가지 — Gemini 4 Hydrogen 원샷 실험 기록과 스킬 설치 안내">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ee; --surface:#ffffff; --ink:#1d1b24; --muted:#5e5a6b; --line:#dcd7cb;
+  --accent:#1f8a4c; --accent-ink:#ffffff; --cell:#e8e3d6; --code-bg:#1d1b24; --code-ink:#e9f5ec;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111016; --surface:#1b1a22; --ink:#ecebf2; --muted:#a19dae; --line:#2e2c38;
+    --accent:#4cd38a; --accent-ink:#0b1a11; --cell:#24222d; --code-bg:#0b0a10; --code-ink:#c9f2d8;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111016; --surface:#1b1a22; --ink:#ecebf2; --muted:#a19dae; --line:#2e2c38;
+  --accent:#4cd38a; --accent-ink:#0b1a11; --cell:#24222d; --code-bg:#0b0a10; --code-ink:#c9f2d8;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Noto Sans KR",system-ui,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+header{padding:56px 0 28px;border-bottom:1px solid var(--line);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:18px 18px;background-position:-1px -1px}
+header .wrap{background:var(--bg);padding-top:20px;padding-bottom:20px;border:1px solid var(--line)}
+.kicker{font:600 13px/1 "JetBrains Mono",monospace;color:var(--muted);letter-spacing:.04em}
+h1{font-family:"DotGothic16",monospace;font-weight:400;font-size:clamp(30px,6vw,56px);line-height:1.15;margin:12px 0 10px}
+h1 em{font-style:normal;color:var(--accent)}
+.lede{max-width:760px;color:var(--muted);margin:0}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.facts span{font:500 13px/1 "JetBrains Mono",monospace;border:1px solid var(--line);background:var(--surface);padding:8px 10px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{display:inline-block;padding:11px 16px;font-weight:700;text-decoration:none;border:2px solid var(--ink);color:var(--ink);background:var(--surface)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+h2{font-family:"DotGothic16",monospace;font-weight:400;font-size:28px;margin:48px 0 6px}
+.sub{color:var(--muted);margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column}
+.card video{width:100%;display:block;background:#000;aspect-ratio:16/9;object-fit:contain;image-rendering:pixelated}
+.card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{margin:0;font-size:17px}
+.num{font:600 12px/1 "JetBrains Mono",monospace;color:var(--accent);margin-right:6px}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.meta span{font:500 12px/1 "JetBrains Mono",monospace;background:var(--cell);padding:6px 8px}
+.links{display:flex;gap:14px;font-size:14px;margin-top:6px}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.step{background:var(--surface);border:1px solid var(--line);padding:18px}
+.step b{font-family:"DotGothic16",monospace;font-weight:400;font-size:20px;display:block;margin-bottom:6px}
+pre{background:var(--code-bg);color:var(--code-ink);padding:14px 16px;overflow-x:auto;font:13px/1.6 "JetBrains Mono",monospace;margin:10px 0}
+code{font-family:"JetBrains Mono",monospace;font-size:.92em}
+.note{border-left:4px solid var(--accent);padding:10px 14px;background:var(--surface);color:var(--muted);font-size:14px}
+footer{margin:56px 0 0;padding:24px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:420px){ .grid{grid-template-columns:1fr} header{padding-top:24px} }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kicker">GEMINI 4 HYDROGEN · GOOGLE SHEETS · 1 CELL = 1 PIXEL</div>
+    <h1>셀 수식만으로 <em>움직이는</em><br>구글 시트 픽셀 애니메이션</h1>
+    <p class="lede">모든 셀이 수식으로 자기 색을 계산하고, 프레임 번호 칸 하나만 바뀌면 그림 전체가 움직입니다. 구글의 "Seaside Train Station" 데모를 재현한 뒤 같은 방법으로 만든 9가지 장면입니다. 전부 Gemini 4 Hydrogen이 프롬프트 한 번에 쓴 코드 그대로이고, 사람이 픽셀을 고치지 않았습니다.</p>
+    <div class="facts"><span>9 scenes</span><span>one-shot Code.gs</span><span>~2–3 fps</span><span>2,000–4,200 cells</span><span>2026-11</span></div>
+    <div class="btns">
+      <a class="btn primary" href="https://github.com/techkwon/sheets-pixel-animation">GitHub 저장소</a>
+      <a class="btn" href="#install">스킬 설치하기</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2>갤러리</h2>
+  <p class="sub">실제 구글 시트에서 60초 동안 돌린 화면을 녹화했습니다. 빨리 감기 없이 실제 갱신 속도 그대로입니다.</p>
+  <div class="grid" id="grid"></div>
+
+  <h2>어떻게 움직이나</h2>
+  <p class="sub">스크립트는 붓이 아니라 시계입니다.</p>
+  <div class="how">
+    <div class="step"><b>1. 프레임 칸</b>B1 같은 칸 하나에 프레임 번호가 들어 있습니다.</div>
+    <div class="step"><b>2. 픽셀 수식</b>수천 개의 셀이 <code>=LET(f,$B$1, … SIN · MOD · INDEX …)</code>로 자기 색 번호를 계산합니다.</div>
+    <div class="step"><b>3. 조건부 서식</b>색 번호 16~24개를 배경색으로 바꿉니다.</div>
+    <div class="step"><b>4. play()</b>Apps Script는 프레임 번호를 1씩 올리고 화면을 새로 고칠 뿐입니다.</div>
+  </div>
+
+  <h2 id="install">스킬로 직접 만들기</h2>
+  <p class="sub">주제 한 줄을 주면 프롬프트 작성 → Hydrogen이 Code.gs 작성 → clasp로 새 시트 만들기까지 자동으로 합니다.</p>
+  <pre>git clone https://github.com/techkwon/sheets-pixel-animation.git
+cd sheets-pixel-animation
+./install.sh            # Antigravity CLI (agy)
+./install.sh --claude   # Claude Code에도 설치</pre>
+  <pre>agy -p "구글 시트 애니메이션 만들어줘: 벚꽃 날리는 운동장에서 강아지가 공을 쫓는 장면" --model gemini-4-hydrogen-high</pre>
+  <p class="note">준비물: Antigravity CLI(Gemini 4 Hydrogen), Node.js, Python 3, clasp(<code>npm i -g @google/clasp</code> → <code>clasp login</code>, Apps Script API 켜기). 녹화 자동화는 선택(ego-lite, ffmpeg). 설치 없이 해 보려면 예제의 <code>Code.gs</code>를 새 시트의 확장 프로그램 → Apps Script에 붙여 넣고 <code>setup</code>을 실행하세요.</p>
+
+  <h2>배운 것</h2>
+  <div class="how">
+    <div class="step"><b>속도</b>2,000~2,700칸·16~24색이면 초당 약 2장. 3,500칸을 넘으면 더 느려집니다.</div>
+    <div class="step"><b>글자</b>정확한 낱말과 "1픽셀 여백"을 함께 주세요. 안 그러면 수능 판의 D-DAY처럼 잘립니다.</div>
+    <div class="step"><b>인물</b>닮게 그리기보다 이름표 + 시그니처 동작이 알아보기 쉽습니다(리센느 v1 → v2).</div>
+    <div class="step"><b>병렬</b>다섯 주제를 동시에 돌려 약 6분 만에 다섯 장면을 받았습니다.</div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">누구나쉽게 · TechKwon — 그림: Gemini 4 Hydrogen · 정리: Claude. 3~6번은 팬아트 실험이며 원작·초상의 권리는 각 권리자에게 있습니다.</div>
+</footer>
+
+<script>
+const R = "https://github.com/techkwon/sheets-pixel-animation/tree/main/examples/";
+const items = [
+  ["01-seaside-station","해변 기차역","구글 데모 재현. 해안선을 달리는 기차, 구름, 낙엽.","88×48","실측 ~2.7 fps"],
+  ["02-remember-november","Remember November 2026","달력이 11월로 넘어가면 북극곰이 볼을 붉히며 손을 흔듭니다.","72×38","실측 ~2.4 fps"],
+  ["03-chiikawa","치이카와 풀 뽑기","하치와레의 가르마, 우사기의 \"YAHA!\" 말풍선.","64×38","~2 fps"],
+  ["04-a2o-lite-neon","A2O LITE 〈NEON〉 인트로","아이징·시리 2인 안무, 자막 NEON AND BEYOND ↔ MIHON N BIHON?!","64×38","실측 ~2.2 fps"],
+  ["05-rescene-v1","리센느 무대 v1","다섯 명 솔로 포즈 → 하트. 누가 누군지 구분이 어려웠던 첫 판.","72×35","~2 fps"],
+  ["06-rescene-v2","리센느 무대 v2","이름표 + 멤버별 시그니처 동작(불꽃, 음표, YAHO!, 윙크).","94×38","~1.6 fps"],
+  ["07-christmas-eve","크리스마스 이브 마을","산타 썰매, 하나씩 켜지는 트리 장식, MERRY CHRISTMAS.","64×36","~2.4 fps"],
+  ["08-suneung-cheer","수능 응원 D-5 → D-DAY","카운트다운, 교문에 붙는 엿·찹쌀떡, FIGHTING!","56×32","~2 fps"],
+  ["09-winter-gwanghwamun","겨울 광화문","스킬로 만든 첫 결과. 눈 오는 광화문 앞 눈사람 만들기.","72×36","~2 fps"]
+];
+const g = document.getElementById("grid");
+for (const [slug, t, d, grid, fps] of items) {
+  const n = slug.slice(0, 2);
+  const el = document.createElement("article");
+  el.className = "card";
+  el.innerHTML = `<video src="media/${slug}.mp4" poster="media/${slug}.jpg" muted loop playsinline preload="none" controls></video>
+  <div class="body"><h3><span class="num">${n}</span>${t}</h3><p>${d}</p>
+  <div class="meta"><span>${grid}</span><span>${fps}</span></div>
+  <div class="links"><a href="${R}${slug}/Code.gs">Code.gs</a><a href="${R}${slug}/prompt.txt">프롬프트</a></div></div>`;
+  g.appendChild(el);
+}
+const io = "IntersectionObserver" in window ? new IntersectionObserver(es => {
+  for (const e of es) { const v = e.target; if (e.isIntersecting) { v.preload = "auto"; v.play().catch(() => {}); } else v.pause(); }
+}, { threshold: 0.4 }) : null;
+if (io) document.querySelectorAll("video").forEach(v => io.observe(v));
+</script>
+</body>
+</html>
