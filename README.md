@@ -75,6 +75,12 @@ Apps Script play(): B1 += 1 → SpreadsheetApp.flush() → 반복 (약 60초)
 
 `sheets-pixel-animation` 스킬은 주제 한 줄을 받아 **프롬프트 작성 → Hydrogen이 Code.gs 작성 → clasp로 새 시트 만들고 코드 넣기 → (선택) 녹화·mp4** 까지 진행합니다.
 
+**간략판 `sheets-pixel-animation-lite`**: 녹화·mp4 없이 **새 시트를 만들고 코드를 넣는 데까지만** 합니다. 명령 하나(`make_sheet.sh <폴더> "<제목>"`)로 Hydrogen 실행 → 문법·함수 검사 → clasp 시트 생성까지 이어서 하고, 시트 링크와 메뉴 이름을 알려 줍니다. ego-lite·ffmpeg가 필요 없습니다. `install.sh`가 두 스킬을 같이 설치합니다.
+
+```bash
+agy -p "시트 애니메이션 간단 버전으로 만들어줘: 비 오는 날 우산 쓴 고양이" --model gemini-4-hydrogen-high
+```
+
 ### 준비물
 
 | 도구 | 용도 | 설치 |
@@ -91,7 +97,7 @@ Apps Script play(): B1 += 1 → SpreadsheetApp.flush() → 반복 (약 60초)
 ```bash
 git clone https://github.com/techkwon/sheets-pixel-animation.git
 cd sheets-pixel-animation
-./install.sh            # agy용: ~/.gemini/antigravity-cli/skills/sheets-pixel-animation
+./install.sh            # agy용: ~/.gemini/antigravity-cli/skills/ 에 전체판·간략판 설치
 ./install.sh --claude   # Claude Code에도 같이 설치하려면
 ```
 
@@ -101,7 +107,7 @@ cd sheets-pixel-animation
 agy -p "Which skills are available to you? Reply with only the names."
 ```
 
-목록에 `sheets-pixel-animation`이 보이면 됩니다.
+목록에 `sheets-pixel-animation`, `sheets-pixel-animation-lite`가 보이면 됩니다.
 
 ### 사용
 
@@ -121,6 +127,9 @@ skill/sheets-pixel-animation/
     ├── new_sheet.sh            # clasp로 새 시트 + 코드 넣기, 시트 링크·메뉴 이름 출력
     ├── record.sh / record.mjs.tpl  # ego-lite로 Setup → Play → 68초 캡처 (선택)
     └── make_video.sh           # 캡처를 30fps mp4 + 장면 8칸 이미지로
+skill/sheets-pixel-animation-lite/   # 간략판: 시트 제작까지만
+├── SKILL.md
+└── scripts/make_sheet.sh       # Hydrogen → 검사 → new_sheet.sh(전체판) 한 번에
 ```
 
 ## 6. 프롬프트 요령 (실험에서 배운 것)
@@ -144,7 +153,7 @@ skill/sheets-pixel-animation/
 
 ```
 examples/      9가지 장면: prompt.txt · Code.gs · frames.jpg
-skill/         Antigravity CLI / Claude Code 스킬
+skill/         Antigravity CLI / Claude Code 스킬 (전체판 + 간략판)
 docs/          GitHub Pages 갤러리 (index.html, media/*.mp4)
 install.sh     스킬 설치 스크립트
 ```
