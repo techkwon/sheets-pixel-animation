@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>시트 픽셀 애니메이션</title>
-<meta name="description" content="구글 시트 셀 수식만으로 움직이는 픽셀 애니메이션 9가지 — Gemini 4 Hydrogen 원샷 실험 기록과 스킬 설치 안내">
+<meta name="description" content="구글 시트 셀 수식만으로 움직이는 픽셀 애니메이션 9가지 — Gemini 4 Hydrogen 원샷 실험 기록과 스킬(전체판·간략판) 설치 안내">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -95,9 +95,11 @@ footer{margin:56px 0 0;padding:24px 0 40px;border-top:1px solid var(--line);colo
   <p class="sub">주제 한 줄을 주면 프롬프트 작성 → Hydrogen이 Code.gs 작성 → clasp로 새 시트 만들기까지 자동으로 합니다.</p>
   <pre>git clone https://github.com/techkwon/sheets-pixel-animation.git
 cd sheets-pixel-animation
-./install.sh            # Antigravity CLI (agy)
+./install.sh            # Antigravity CLI (agy): 전체판 + 간략판
 ./install.sh --claude   # Claude Code에도 설치</pre>
   <pre>agy -p "구글 시트 애니메이션 만들어줘: 벚꽃 날리는 운동장에서 강아지가 공을 쫓는 장면" --model gemini-4-hydrogen-high</pre>
+  <p class="note"><b>간략판 <code>sheets-pixel-animation-lite</code></b>: 녹화·mp4 없이 새 시트를 만들고 코드를 넣는 데까지만 합니다. Hydrogen 실행 → 문법·함수 검사 → clasp 시트 생성을 한 번에 하고, 시트 링크와 메뉴 이름을 알려 줍니다. ego-lite·ffmpeg가 필요 없습니다.</p>
+  <pre>agy -p "시트 애니메이션 간단 버전으로 만들어줘: 비 오는 날 우산 쓴 고양이" --model gemini-4-hydrogen-high</pre>
   <p class="note">준비물: Antigravity CLI(Gemini 4 Hydrogen), Node.js, Python 3, clasp(<code>npm i -g @google/clasp</code> → <code>clasp login</code>, Apps Script API 켜기). 녹화 자동화는 선택(ego-lite, ffmpeg). 설치 없이 해 보려면 예제의 <code>Code.gs</code>를 새 시트의 확장 프로그램 → Apps Script에 붙여 넣고 <code>setup</code>을 실행하세요.</p>
 
   <h2>배운 것</h2>
